@@ -107,8 +107,13 @@ fn.routeAfterAuthStatusChangeError = function (router, err) {
   // Token has expired - no longer valid. Navigate back to primary auth.
   if (err.errorCode === ErrorCodes.INVALID_TOKEN_EXCEPTION) {
     router.appState.set('flashError', err);
-    router.controller.state.set('navigateDir', Enums.DIRECTION_BACK);
-    router.navigate('', { trigger: true });
+    if (router.settings.get('features.isMfaOnlyFlow')) {
+      router.controller.state.set('navigateDir', Enums.DIRECTION_BACK);
+      router.navigate('signin/mfa-invalid-session', { trigger: true });
+    } else {
+      router.controller.state.set('navigateDir', Enums.DIRECTION_BACK);
+      router.navigate('', { trigger: true });
+    }
     return;
   }
 
