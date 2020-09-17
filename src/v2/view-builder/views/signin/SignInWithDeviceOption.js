@@ -1,6 +1,6 @@
 import { View, createButton, loc, $ } from 'okta';
-// import { fetchRequest } from '../../ion/httpClient';
 import hbs from 'handlebars-inline-precompile';
+import Util from '../../../../util/Util';
 
 export default View.extend({
   className: 'sign-in-with-device-option',
@@ -14,8 +14,7 @@ export default View.extend({
       className: 'button',
       title: loc('oktaVerify.button', 'login'),
       click () {
-        // appState.trigger('invokeAction', 'launch-authenticator');
-        const rem = this.options.appState.get('rawIdxState').remediation.value
+        const rem = this.options.appState.get('remediations')
         .filter(v => v.name === 'launch-authenticator')[0];
         // fetchRequest(
         //   rem.href,
