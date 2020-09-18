@@ -80,14 +80,7 @@ const Body = BaseForm.extend(Object.assign(
           click: () => {
             // only window.location.href can open universal link in iOS/MacOS
             // other methods won't do, ex, AJAX get or form get (Util.redirectWithFormGet)
-            request({
-              url: this.options.appState.get('remediations')[0].href,
-              method: 'post',
-              data: JSON.stringify({ stateHandle: this.options.appState.get('context').stateHandle }),
-            })
-            .then(() => {
-              Util.redirect(deviceChallenge.href);
-            });
+            Util.redirect(deviceChallenge.href);
           }
         }));
       }
