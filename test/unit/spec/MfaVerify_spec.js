@@ -2294,8 +2294,8 @@ Expect.describe('MFA Verify', function () {
           expect(test.form.signoutLink($sandbox).length).toBe(0);
         });
       });
-      itp('is not present if features.isMfaOnlyFlow is true', function () {
-        return setupSecurityQuestion({ 'features.isMfaOnlyFlow': true }).then(function (test) {
+      itp('is not present if features.mfaOnlyFlow is true', function () {
+        return setupSecurityQuestion({ 'features.mfaOnlyFlow': true }).then(function (test) {
           expect(test.form.signoutLink($sandbox).length).toBe(0);
         });
       });
@@ -4256,8 +4256,8 @@ Expect.describe('MFA Verify', function () {
           expect(test.form.signoutLink($sandbox).length).toBe(0);
         });
       });
-      itp('does not have sign out link if features.isMfaOnlyFlow is true', function () {
-        return setupClaimsProviderFactorWithIntrospect({ 'features.isMfaOnlyFlow': true }).then(function (test) {
+      itp('does not have sign out link if features.mfaOnlyFlow is true', function () {
+        return setupClaimsProviderFactorWithIntrospect({ 'features.mfaOnlyFlow': true }).then(function (test) {
           expect(test.form.signoutLink($sandbox).length).toBe(0);
         });
       });
@@ -4367,8 +4367,8 @@ Expect.describe('MFA Verify', function () {
             expect(test.form.signoutLink($sandbox).length).toBe(0);
           });
         });
-        itp('does not have sign out link if features.isMfaOnlyFlow is true', function () {
-          this.options.settings = { 'features.isMfaOnlyFlow': true };
+        itp('does not have sign out link if features.mfaOnlyFlow is true', function () {
+          this.options.settings = { 'features.mfaOnlyFlow': true };
           return setupMfaChallengeClaimsFactor(this.options).then(function (test) {
             expect(test.form.signoutLink($sandbox).length).toBe(0);
           });

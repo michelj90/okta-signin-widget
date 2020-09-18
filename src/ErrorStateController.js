@@ -12,8 +12,8 @@
 
 import FormController from 'util/FormController';
 export default FormController.extend({
-  className: 'mfa-invalid-session',
-  Model: function () {},
+  className: 'error-state',
+  Model: {},
   Form: {
     noButtonBar: true,
   },

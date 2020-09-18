@@ -360,7 +360,7 @@ const controllerClasses = {
   EnrollUser: 'enroll-user',
   VerifyPIV: 'piv-cac-card',
   Poll: 'poll',
-  MfaInvalidSession: 'mfa-invalid-session',
+  ErrorState: 'error-state',
 };
 
 _.each(controllerClasses, function (className, controller) {

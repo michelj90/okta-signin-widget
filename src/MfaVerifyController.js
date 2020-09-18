@@ -134,7 +134,7 @@ export default BaseLoginController.extend({
     });
 
     if (!this.settings.get('features.hideSignOutLinkInMFA') &&
-        !this.settings.get('features.isMfaOnlyFlow')) {
+        !this.settings.get('features.mfaOnlyFlow')) {
       this.add(new FooterSignout(this.toJSON()));
     }
   },

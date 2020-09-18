@@ -125,7 +125,7 @@ export default FormController.extend({
     this.model.set('provider', this.options.provider);
     this.model.set('factorType', this.options.factorType);
     if (!this.settings.get('features.hideSignOutLinkInMFA') &&
-        !this.settings.get('features.isMfaOnlyFlow')) {
+        !this.settings.get('features.mfaOnlyFlow')) {
       this.addFooter(FooterSignout);
     }
   },

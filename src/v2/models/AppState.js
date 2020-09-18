@@ -138,7 +138,7 @@ export default Model.extend({
   },
 
   // Sign Out link will be displayed in the footer of a form, unless
-  // - widget config hideSignOutLinkInMFA=true or isMfaOnlyFlow=true
+  // - widget config hideSignOutLinkInMFA=true or mfaOnlyFlow=true
   // and form is for identity verification (FORMS_FOR_VERIFICATION)
   // - cancel remediation form is not present in the response
   // - form is part of our list FORMS_WITHOUT_SIGNOUT

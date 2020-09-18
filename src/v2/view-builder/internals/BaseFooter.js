@@ -42,7 +42,7 @@ export default View.extend({
     // add cancel/signout link if the form qualifies for it
     if (this.options.appState.shouldShowSignOutLinkInCurrentForm(
       this.options.settings.get('features.hideSignOutLinkInMFA') ||
-      this.settings.get('features.isMfaOnlyFlow'))) {
+      this.settings.get('features.mfaOnlyFlow'))) {
       links = links.concat(getSignOutLink(this.options.settings));
     }
 

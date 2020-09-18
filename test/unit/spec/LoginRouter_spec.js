@@ -7,7 +7,7 @@ import EnrollCallForm from 'helpers/dom/EnrollCallForm';
 import IDPDiscoveryForm from 'helpers/dom/IDPDiscoveryForm';
 import MfaVerifyForm from 'helpers/dom/MfaVerifyForm';
 import PrimaryAuthForm from 'helpers/dom/PrimaryAuthForm';
-import MfaInvalidSessionForm from 'helpers/dom/MfaInvalidSessionForm';
+import ErrorStateForm from 'helpers/dom/ErrorStateForm';
 import RecoveryForm from 'helpers/dom/RecoveryQuestionForm';
 import Util from 'helpers/mocks/Util';
 import Expect from 'helpers/util/Expect';
@@ -878,8 +878,8 @@ Expect.describe('LoginRouter', function () {
         expect(form.hasErrors()).toBe(false);
       });
   });
-  itp('navigates to MfaInvalidSession page and shows a flash error if the stateToken expires', function () {
-    return setup({'features.isMfaOnlyFlow': true }, resRecovery)
+  itp('navigates to ErrorState page and shows a flash error if the stateToken expires', function () {
+    return setup({'features.mfaOnlyFlow': true }, resRecovery)
       .then(function (test) {
         Util.mockRouterNavigate(test.router);
         test.setNextResponse(resRecovery);
@@ -892,13 +892,13 @@ Expect.describe('LoginRouter', function () {
 
         form.setAnswer('4444');
         form.submit();
-        return Expect.waitForMfaInvalidSession(test);
+        return Expect.waitForErrorState(test);
       })
       .then(function (test) {
         expect(test.afterErrorHandler).toHaveBeenCalledTimes(1);
         expect(test.afterErrorHandler.calls.allArgs()).toEqual([
           [
-            { controller: 'mfa-invalid-session' },
+            { controller: 'error-state' },
             {
               name: 'AuthApiError',
               message: 'Invalid token provided',
@@ -918,8 +918,8 @@ Expect.describe('LoginRouter', function () {
             },
           ],
         ]);
-        const form = new MfaInvalidSessionForm($sandbox);
-        expect(form.isMfaInvalidSessionView()).toBe(true);
+        const form = new ErrorStateForm($sandbox);
+        expect(form.isErrorStateView()).toBe(true);
         expect(form.hasErrors()).toBe(true);
         expect(form.errorMessage()).toBe('Your session has expired. Please try to sign in again.');
       });
