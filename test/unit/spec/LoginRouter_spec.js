@@ -862,7 +862,7 @@ Expect.describe('LoginRouter', function () {
 
         expect(form.isPrimaryAuth()).toBe(true);
         expect(form.hasErrors()).toBe(true);
-        expect(form.errorMessage()).toBe('Your session has expired. Please try to sign in again.');
+        expect(form.errorMessage()).toBe('Your session has expired. Please try to log in again.');
 
         // Submit the form and verify that we no longer have the flash error message
         test.setNextResponse(resMfa);
@@ -921,7 +921,7 @@ Expect.describe('LoginRouter', function () {
         const form = new ErrorStateForm($sandbox);
         expect(form.isErrorStateView()).toBe(true);
         expect(form.hasErrors()).toBe(true);
-        expect(form.errorMessage()).toBe('Your session has expired. Please try to sign in again.');
+        expect(form.errorMessage()).toBe('Unable to authenticate at this time. Try again.');
       });
   });
   itp('navigates to PrimaryAuth if status is UNAUTHENTICATED, and IDP_DISCOVERY is disabled', function () {
