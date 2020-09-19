@@ -862,7 +862,7 @@ Expect.describe('LoginRouter', function () {
 
         expect(form.isPrimaryAuth()).toBe(true);
         expect(form.hasErrors()).toBe(true);
-        expect(form.errorMessage()).toBe('Your session has expired. Please try to log in again.');
+        expect(form.errorMessage()).toBe('Your session has expired. Please try to sign in again.');
 
         // Submit the form and verify that we no longer have the flash error message
         test.setNextResponse(resMfa);
